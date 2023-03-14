@@ -5,12 +5,14 @@
         static void Main(string[] args)
         {
             Calculadora calculadora = null;
+            char entradaOperacao;
+            string[] descricao = new string[100];
+            int qntdOperacao = 0;
 
             while (true) 
             {
                 double entradaNumA;
                 double entradaNumB;
-                char entradaOperacao;
                 Console.Clear();
                 Console.WriteLine("============================[ CTRL + C ]=");
                 Console.WriteLine("========  Calculadora Top 2023  =========");
@@ -22,9 +24,23 @@
                 Console.WriteLine(" / = Divisao");
                 Console.WriteLine(" % = Modulo da divisao");
                 Console.WriteLine(" # = Gera tabuada do numero desejado");
+                Console.WriteLine(" @ = Gera relatorio");
                 Console.WriteLine("=========================================");
                 Console.Write("Informe a operacao: ");
                 entradaOperacao = Convert.ToChar(Console.ReadLine());
+                //if (entradaOperacao == '#' || entradaOperacao == '+' || entradaOperacao == '-' || entradaOperacao == '*' || entradaOperacao == '/' || entradaOperacao == '%')
+                //{
+                //}
+                if (entradaOperacao == '@')
+                {
+                    switch (entradaOperacao)
+                    {
+                        case '@':
+                            calculadora = new Calculadora(descricao);
+                            calculadora.GerarRelatorio();
+                            break;
+                    }
+                }
                 Console.WriteLine("=========================================");
                 Console.Write("Informe o primeiro numero: ");
                 entradaNumA = Convert.ToDouble(Console.ReadLine());
@@ -33,8 +49,7 @@
                 entradaNumB = Convert.ToDouble(Console.ReadLine());
                 Console.WriteLine("=========================================");
                 Console.WriteLine("=========================================");
-                Console.WriteLine("=========================================");
-                if(entradaOperacao != '#' && entradaOperacao != '+' && entradaOperacao != '-' && entradaOperacao != '*' && entradaOperacao != '/' && entradaOperacao != '%')
+                if(entradaOperacao != '#' && entradaOperacao != '+' && entradaOperacao != '-' && entradaOperacao != '*' && entradaOperacao != '/' && entradaOperacao != '%' && entradaOperacao != '@')
                 {
                     Console.WriteLine("A operacao nao existe na calculadora.");
                 }
@@ -71,10 +86,19 @@
                         calculadora = new Calculadora(entradaNumA, entradaNumB);
                         calculadora.GerarTabuada();
                         break;
+                    //case '@':
+                    //    calculadora = new Calculadora(descricao);
+                    //    calculadora.GerarRelatorio();
+                    //    break;
                     default:
                         calculadora = new Calculadora(entradaOperacao);
                         calculadora.Erro();
                         continue;
+                }
+                if (entradaOperacao == '#' || entradaOperacao == '+' || entradaOperacao == '-' || entradaOperacao == '*' || entradaOperacao == '/' || entradaOperacao == '%')
+                {
+                    descricao[qntdOperacao] = calculadora.NumA +" "+ calculadora.Operacao+" "+calculadora.NumB + " = " +calculadora.Resultado;
+                    qntdOperacao++;
                 }
                 Console.WriteLine("=============   RESULTADO   =============");
                 if(entradaOperacao != '#')

@@ -13,6 +13,7 @@ namespace Calculadora.ConsoleApp
         public double NumB { get; set; }
         public char Operacao { get; set; }
         public double Resultado { get; set; }
+        public string[] Descricao { get; set; }
         public Calculadora(double num1, double num2)
         {
             NumA = num1;
@@ -21,6 +22,10 @@ namespace Calculadora.ConsoleApp
         public Calculadora(char operacao)
         {
             Operacao = operacao;
+        }
+        public Calculadora(string[] descricao)
+        {
+            Descricao = descricao;
         }
         public void Adicao()
         {
@@ -52,8 +57,24 @@ namespace Calculadora.ConsoleApp
             for(
                 int i = 1; i <= NumB; i++) 
             {
+                if (i % 2 == 0)
+                    Console.BackgroundColor = ConsoleColor.DarkBlue;
+                else
+                    Console.BackgroundColor = ConsoleColor.Blue;
                 Resultado = NumA * i;
                 Console.WriteLine(NumA + " x " + i + " = " + Resultado);
+            }
+            Console.BackgroundColor= ConsoleColor.Black;
+        }
+        public void GerarRelatorio()
+        {
+            Console.WriteLine("=========================================");
+            for (int i = 0; i < Descricao.Length; i++)
+            {
+                if (Descricao[i] != null)
+                {
+                    Console.WriteLine(Descricao[i]);
+                }
             }
         }
         public void Erro()
