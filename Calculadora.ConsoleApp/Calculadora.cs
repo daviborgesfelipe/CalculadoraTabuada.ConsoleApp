@@ -16,7 +16,9 @@ namespace Calculadora.ConsoleApp
         public double Resultado { get; set; }
         public string[] Descricao { get; set; }
         public Calculadora() { }
-        public Calculadora(double num1, double num2)
+        public Calculadora(
+            double num1,
+            double num2)
         {
             NumA = num1;
             NumB = num2;
@@ -109,7 +111,15 @@ namespace Calculadora.ConsoleApp
         public void ValidarOperacao(char entradaOpcao)
         {
             Console.WriteLine();
-            if (entradaOpcao != '1' && entradaOpcao != '2' && entradaOpcao != '3' && entradaOpcao != '4' && entradaOpcao != '5' && entradaOpcao != '6' && entradaOpcao != '7' && entradaOpcao != '0')
+            if (
+                entradaOpcao != '1' &&
+                entradaOpcao != '2' &&
+                entradaOpcao != '3' &&
+                entradaOpcao != '4' &&
+                entradaOpcao != '5' &&
+                entradaOpcao != '6' &&
+                entradaOpcao != '7' &&
+                entradaOpcao != '0')
             {
                 Console.WriteLine("A operacao nao existe na calculadora.");
             }
@@ -118,7 +128,14 @@ namespace Calculadora.ConsoleApp
         }
         public bool ChecarOpcao(char entradaOpcao)
         {
-            bool entrada = entradaOpcao == '1' || entradaOpcao == '2' || entradaOpcao == '3' || entradaOpcao == '4' || entradaOpcao == '5' || entradaOpcao == '6' ||entradaOpcao == '0';
+            bool entrada = 
+                entradaOpcao == '1' ||
+                entradaOpcao == '2' ||
+                entradaOpcao == '3' ||
+                entradaOpcao == '4' ||
+                entradaOpcao == '5' ||
+                entradaOpcao == '6' ||
+                entradaOpcao == '0';
             return entrada;
         }
         public double GerarEntradaNumA()
@@ -137,7 +154,11 @@ namespace Calculadora.ConsoleApp
             Console.WriteLine("=========================================");
             return entradaNumB;
         }
-        public void IniciarCalculadora(int qntdOperacao, char entradaOpcao, string[] descricao, Calculadora calculadora)
+        public void IniciarCalculadora(
+            int qntdOperacao,
+            char entradaOpcao,
+            string[] descricao,
+            Calculadora calculadora)
         {
             if(entradaOpcao == '7')
             {
@@ -200,7 +221,11 @@ namespace Calculadora.ConsoleApp
 
             }
         }
-        public void ImprimirTabuada(string[] descricao, char entradaOpcao, Calculadora calculadora, int qntdOperacao)
+        public void ImprimirTabuada(
+            string[] descricao,
+            char entradaOpcao,
+            Calculadora calculadora,
+            int qntdOperacao)
         {
             if (ChecarOpcao(entradaOpcao))
             {
@@ -208,7 +233,9 @@ namespace Calculadora.ConsoleApp
                 qntdOperacao++;
             }
         }
-        public void ImprimirResultado(char entradaOpcao, Calculadora calculadora)
+        public void ImprimirResultado(
+            char entradaOpcao,
+            Calculadora calculadora)
         {
             Console.WriteLine("=============   RESULTADO   =============");
             if (entradaOpcao != '#')
